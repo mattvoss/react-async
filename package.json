@@ -1,12 +1,16 @@
 {
   "name": "react-promise",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "react.js component for dealing with promises",
-  "main": "async.js",
+  "main": "dist/async.js",
   "jspm": {
     "format": "esm"
   },
   "scripts": {
+    "build": "npm run clean && npm run build:lib",
+    "build:lib": "babel --out-dir dist async.js",
+    "clean": "npm run clean:lib",
+    "clean:lib": "rm -rf dist",
     "test": "node run-tests",
     "pretest": "node_modules/.bin/standard",
     "precommit": "npm test"
@@ -38,5 +42,11 @@
     "react-addons-test-utils": "^0.14.3",
     "react-dom": "^0.14.3",
     "standard": "^5.4.1"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
   }
 }
